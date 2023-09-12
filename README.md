@@ -159,7 +159,177 @@ class Customer {
 };
  ```
 
-### Use Searchable Names
+### İsimlendirmeyi Kodlamadan Kaçının
+
+Bir değişken veya sabit, kod gövdesinde birden çok yerde görülebiliyor veya kullanılabiliyorsa, ona arama dostu bir ad verilmesi zorunludur.
+
+```java
+for (int j=0; j<34; j++) {
+    s += (t[j]*4)/5;
+}
+```
+to
+
+```java
+int realDaysPerIdealDay = 4;
+const int WORK_DAYS_PER_WEEK = 5;
+int sum = 0;
+for (int j=0; j < NUMBER_OF_TASKS; j++) {
+    int realTaskDays = taskEstimate[j] * realDaysPerIdealDay;
+    int realTaskWeeks = (realdays / WORK_DAYS_PER_WEEK);
+    sum += realTaskWeeks;
+}
+```
+
+Java programcılarının tür kodlamasına ihtiyacı yoktur. Nesneler güçlü bir şekilde yazılmıştır ve düzenleme ortamları, bir derlemeyi çalıştırmadan çok önce bir tür hatasını algılayacak şekilde gelişmiştir! Dolayısıyla günümüzde HN ve diğer tür kodlama biçimleri yalnızca engeldir. Bir değişkenin, işlevin veya sınıfın adını veya türünü değiştirmeyi zorlaştırırlar. Kodu okumayı zorlaştırıyorlar. Ve kodlama sisteminin okuyucuyu yanıltma ihtimalini yaratıyorlar
+
+```java
+PhoneNumber phoneString;
+// Tür değiştiğinde isim değişmedi!
+```
+
+Ayrıca üye değişkenlerine artık m_ ön eki eklemenize de gerek yok. Sınıflarınız ve işlevleriniz, onlara ihtiyacınız olmayacak kadar küçük olmalıdır. Ayrıca üyeleri belirgin kılmak için vurgulayan veya renklendiren bir düzenleme ortamı kullanmalısınız.
+
+```java
+public class Part {
+    private String m_dsc; // The textual description
+    void setName(String name) {
+        m_dsc = name;
+    }
+}
+_________________________________________________
+
+public class Part {
+    String description;
+    void setDescription(String description) {
+        this.description = description;
+    }
+}
+```
+
+### Sınıf İsimleri
+
+Sınıflar ve nesneler aşağıdaki gibi isim veya isim tamlaması adlarına sahip olmalıdır: **Customer**, **WikiPage**,
+**Account**, ve **AddressParser**. gibi kelimelerden kaçının **Manager**, **Processor**, **Data**, yada **Info** adına bir sınıftan. Bir sınıf adı bir fiil olmamalıdır.
+
+### Metot İsimleri
+
+Metotlar, **postPayment**, **deletePage** veya **save** gibi fiil veya fiil tümceciği adlarına sahip olmalıdır. Erişimciler, değiştiriciler ve yüklemler, javabean standardına uygun olarak değerlerine göre adlandırılmalı ve **get**, **set** ve is ön ekleriyle donatılmalıdır.
+
+```java
+string name = employee.getName();
+customer.setName("mike");
+if (paycheck.isPosted())...
+```
+
+Yapıcılar aşırı yüklendiğinde, bağımsız değişkenleri açıklayan adlarla statik fabrika yöntemlerini kullanın. Örneğin
+
+```java
+Complex fulcrumPoint = Complex.FromRealNumber(23.0);
+```
+
+genellikle bundan daha iyidir
+
+```java
+Complex fulcrumPoint = new Complex(23.0);
+```
+İlgili kurucuları özel yaparak bunların kullanımını zorunlu kılmayı düşünün.
+
+### Konsept Başına Bir Kelime Seçin
+
+Soyut bir kavram için bir kelime seçin ve ona bağlı kalın. Örneğin, farklı sınıfların eşdeğer yöntemleri olarak **fetch**, **retrieve** ve **get** işlemlerinin yapılması kafa karıştırıcıdır. Hangi yöntem adının hangi sınıfa uygun olduğunu nasıl hatırlıyorsunuz? Ne yazık ki, hangi terimin kullanıldığını hatırlamak için genellikle kütüphaneyi veya sınıfı hangi şirketin, grubun veya kişinin yazdığını hatırlamanız gerekir. Aksi takdirde, başlıklara ve önceki kod örneklerine göz atarak çok fazla zaman harcarsınız.
+
+Aynı şekilde, aynı kod tabanında bir **controller**, bir **manager** ve bir **driver** bulunması da kafa karıştırıcıdır. **DeviceManager** ve **ProtokolController** arasındaki temel fark nedir? Neden her ikisi de **Controller** değil ya da her ikisi de **Manager** değil? Her ikisi de gerçekten Sürücü mü? Bu ad sizi, hem çok farklı türde hem de farklı sınıflara sahip iki nesne beklemenize yönlendirir.
+
+### Anlamlı Bağlam Ekle
+
+"Kavram başına bir kelime" kuralını izlerseniz, örneğin **add** yöntemine sahip birçok sınıfla karşılaşabilirsiniz. Çeşitli **add** yöntemlerinin parametre listeleri ve dönüş değerleri anlamsal olarak eşdeğer olduğu sürece her şey yolundadır.
+
+Bununla birlikte, aslında aynı anlamda **add** yapmadığı durumlarda, "tutarlılık" için ekleme kelimesini kullanmaya karar verilebilir. **Add**'in mevcut iki değeri ekleyerek veya birleştirerek yeni bir değer yaratacağı birçok sınıfımız olduğunu varsayalım. Şimdi tek parametresini bir koleksiyona koyan bir metoda sahip yeni bir sınıf yazdığımızı varsayalım. Bu yönteme **add** mı demeliyiz? Pek çok başka ekleme yöntemimiz olduğu için tutarlı görünebilir, ancak bu durumda anlambilim farklıdır, bu nedenle bunun yerine **insert** veya **append** gibi bir ad kullanmalıyız. Yeni metot **add** çağırmak bir kelime oyunu olur.
+
+### Çözüm Etki Alanı Adlarını Kullan
+
+Kodunuzu okuyan kişilerin programcı olacağını unutmayın. Öyleyse devam edin ve bilgisayar bilimi (CS) terimlerini, algoritma adlarını, kalıp adlarını, matematik terimlerini vb. kullanın. Her ismi sorunlu alandan çıkarmak akıllıca değildir çünkü iş arkadaşlarımızın, kavramı farklı bir isimle zaten bildikleri halde müşteriye her ismin ne anlama geldiğini sormak için ileri geri koşmalarını istemeyiz.
+
+### Anlamlı Bağlam Ekle
+
+Değişkenlerin daha anlamlı bir bağlama ihtiyacı var mı? İşlev adı bağlamın yalnızca bir kısmını sağlar; gerisini algoritma sağlar. Fonksiyonu baştan sona okuduğunuzda, **number**, **verb** ve **pluralModifier** olmak üzere üç değişkenin "guess statistics" mesajının parçası olduğunu görürsünüz. Maalesef bağlamın anlaşılması gerekiyor. Metota ilk baktığınızda değişkenlerin anlamları anlaşılmazdır.
+
+```java
+private void printGuessStatistics(char candidate, int count) {
+    String number;
+    String verb;
+    String pluralModifier;
+    if (count == 0) {
+        number = "no";
+        verb = "are";
+        pluralModifier = "s";
+    } else if (count == 1) {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    } else {
+        number = Integer.toString(count);
+        verb = "are";
+        pluralModifier = "s";
+    }
+    String guessMessage = String.format(
+    "There %s %s %s%s", verb, number, candidate, pluralModifier
+    );
+    print(guessMessage);
+ }
+```
+
+Fonksiyon biraz fazla uzun ve değişkenler baştan sona kullanılıyor. Fonksiyonu daha küçük parçalara bölmek için bir GuessStatisticsMessage sınıfı oluşturmamız ve bu sınıfın üç değişkenini alanları yapmamız gerekiyor. Bu, üç değişken için net bir bağlam sağlar. Bunlar kesinlikle GuessStatisticsMessage'ın bir parçasıdır. Bağlamın iyileştirilmesi aynı zamanda algoritmanın birçok küçük fonksiyona bölünerek daha temiz hale getirilmesine de olanak tanır.
+
+```java
+public class GuessStatisticsMessage {
+    private String number;
+    private String verb;
+    private String pluralModifier;
+    public String make(char candidate, int count) {
+        createPluralDependentMessageParts(count);
+        return String.format(
+        "There %s %s %s%s",
+        verb, number, candidate, pluralModifier );
+    }
+    private void createPluralDependentMessageParts(int count) {
+        if (count == 0) {
+            thereAreNoLetters();
+        } else if (count == 1) {
+            thereIsOneLetter();
+        } else {
+            thereAreManyLetters(count);
+        }
+    }
+    private void thereAreManyLetters(int count) {
+        number = Integer.toString(count);
+        verb = "are";
+        pluralModifier = "s";
+    }
+    private void thereIsOneLetter() {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    }
+    private void thereAreNoLetters() {
+        number = "no";
+        verb = "are";
+        pluralModifier = "s";
+    }
+}
+```
+### Gereksiz Bağlam Eklemeyin
+
+“Gas Station Deluxe” adı verilen hayali bir uygulamada her sınıfın önüne GSD eklemek kötü bir fikirdir. Açıkçası araçlarınıza karşı çalışıyorsunuz. G yazıp tamamlama tuşuna basıyorsunuz ve sistemdeki her sınıfın bir mil uzunluğundaki listesiyle ödüllendiriliyorsunuz. Bu akıllıca mı? IDE'nin size yardım etmesini neden zorlaştırasınız ki? Aynı şekilde GSD’nin muhasebe modülünde bir MailingAddress sınıfı icat ettiğinizi ve buna GSDAccountAddress adını verdiğinizi varsayalım. Daha sonra müşteri iletişim başvurunuz için bir posta adresine ihtiyacınız olacak. GSDAccountAddress'i kullanıyor musunuz? Doğru isim gibi mi görünüyor? 17 karakterden 10'u gereksiz veya alakasız.
+
+İyi isimler seçmenin en zor yanı, iyi tanımlayıcı beceriler ve ortak bir kültürel arka plan gerektirmesidir. Bu teknik, ticari veya yönetimsel bir sorundan ziyade bir öğretim sorunudur. Sonuç olarak bu alandaki birçok insan bunu yapmayı çok iyi öğrenemiyor.
+
+### Son sözler
+
+İyi isimler seçmenin en zor yanı, iyi tanımlayıcı beceriler ve ortak bir kültürel arka plan gerektirmesidir. Bu teknik, ticari veya yönetimsel bir sorundan ziyade bir öğretim sorunudur. Sonuç olarak bu alandaki birçok insan bunu yapmayı çok iyi öğrenemiyor.
+
+İnsanlar ayrıca bazı geliştiricilerin itiraz edeceği korkusuyla bazı şeyleri yeniden adlandırmaktan da korkuyorlar. Bu korkuyu paylaşmıyoruz ve isimler değiştiğinde (daha iyiye doğru) gerçekten minnettar olduğumuzu görüyoruz. Çoğu zaman sınıfların ve yöntemlerin adlarını gerçekten ezberlemiyoruz. Bunun gibi ayrıntılarla başa çıkmak için modern araçları kullanırız, böylece kodun paragraflar ve cümleler gibi mi yoksa en azından tablolar ve veri yapısı gibi mi okunduğuna odaklanabiliriz (bir cümle her zaman verileri görüntülemenin en iyi yolu değildir). Tıpkı diğer kod iyileştirmelerinde olduğu gibi, yeniden adlandırdığınızda muhtemelen birisini şaşırtacaksınız. Seni yolundan alıkoymasına izin verme.
 
 
 
