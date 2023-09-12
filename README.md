@@ -73,13 +73,13 @@ Kodun basitliğinin değişmediğine dikkat edin. Hala tam olarak aynı sayıda 
 Daha da ileri gidebilir ve bir dizi int kullanmak yerine hücreler için basit bir sınıf yazabiliriz. Sihirli sayıları gizlemek için niyeti ortaya çıkaran bir işlev içerebilir (buna isFlagged adını verin). İşlevin yeni bir sürümüyle sonuçlanır:
 
 ```java
-    public List<Cell> getFlaggedCells() {
-        List<Cell> flaggedCells = new ArrayList<Cell>();
-        for (Cell cell : gameBoard)
-            if (cell.isFlagged())
-                flaggedCells.add(cell);
-        return flaggedCells;
-    }
+public List<Cell> getFlaggedCells() {
+    List<Cell> flaggedCells = new ArrayList<Cell>();
+    for (Cell cell : gameBoard)
+        if (cell.isFlagged())
+            flaggedCells.add(cell);
+    return flaggedCells;
+}
  ```
 
 Bu basit isim değişiklikleriyle olup biteni anlamak hiç de zor değil. Bu, iyi isimler seçmenin gücüdür.
@@ -98,11 +98,11 @@ Geliştirici muhtemelen sizin bol yorumlarınızı ve hatta o sınıf tarafında
 Dezenformatif adlara gerçekten berbat bir örnek, değişken adları olarak küçük harf **L** veya büyük harf **O**'nun özellikle kombinasyon halinde kullanılması olabilir. Elbette ki sorun, bunların neredeyse tamamen sırasıyla bir ve sıfır sabitlerine benzemesidir.
 
 ```java
-    int a = l;
-    if ( O == l )
-        a = O1;
-    else
-        l = 01;
+int a = l;
+if ( O == l )
+    a = O1;
+else
+    l = 01;
  ```
 
  ### Anlamlı Ayrımlar Yapın
@@ -110,11 +110,11 @@ Dezenformatif adlara gerçekten berbat bir örnek, değişken adları olarak kü
  Sayı serisi adlandırma **(a1, a2, .. aN)**, kasıtlı adlandırmanın tersidir. Bu tür isimler bilgi bozucu değildir; bilgi verici değildir; yazarın niyetine dair hiçbir ipucu vermezler.
 
  ```java
-    public static void copyChars(char a1[], char a2[]) {
-        for (int i = 0; i < a1.length; i++) {
-            a2[i] = a1[i];
-        }      
-    }
+public static void copyChars(char a1[], char a2[]) {
+    for (int i = 0; i < a1.length; i++) {
+        a2[i] = a1[i];
+    }      
+}
  ```
 
  Bu işlev, bağımsız değişken adları için **a1** ve **a2** yerine **source** ve **destination** kullanıldığında çok daha iyi okunur.
@@ -122,9 +122,9 @@ Dezenformatif adlara gerçekten berbat bir örnek, değişken adları olarak kü
 Nerede resimlendiğini bildiğimiz bir uygulama var. Suçluyu korumak için isimleri değiştirdik ancak hatanın tam şekli şu şekilde:
 
  ```java
-    getActiveAccount();
-    getActiveAccounts();
-    getActiveAccountInfo();
+getActiveAccount();
+getActiveAccounts();
+getActiveAccountInfo();
  ```
 
 Bu projedeki programcıların bu işlevlerden hangisinin çağrılacağını nasıl bilmeleri gerekiyor?
@@ -140,23 +140,23 @@ Eğer telaffuz edemiyorsan, aptal gibi görünmeden tartışamazsın. "Peki, bur
 Şirket içinde eğlenceli olsun ya da olmasın, kötü adlandırmalara tolerans göstermeyin. Yeni geliştiricilerin değişkenlerin kendilerine açıklanması gerekir.
 
 ```java
-    class DtaRcrd102 {
-        private Date genymdhms;
-        private Date modymdhms;
-        private final String pszqint = "102";
-        /* ... */
-    };
+class DtaRcrd102 {
+    private Date genymdhms;
+    private Date modymdhms;
+    private final String pszqint = "102";
+    /* ... */
+};
  ```
 
 to
 
  ```java
-    class Customer {
-        private Date generationTimestamp;
-        private Date modificationTimestamp;;
-        private final String recordId = "102";
-        /* ... */
-    };
+class Customer {
+    private Date generationTimestamp;
+    private Date modificationTimestamp;;
+    private final String recordId = "102";
+    /* ... */
+};
  ```
 
 ### Use Searchable Names
