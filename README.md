@@ -86,9 +86,6 @@ Bu basit isim değişiklikleriyle olup biteni anlamak hiç de zor değil. Bu, iy
 
 ### Dezenformasyondan Kaçının
 
-Programcılar kodun anlamını gizleyecek yanlış ipuçları bırakmaktan kaçınmalıdır. Bir hipotenüs kodluyor olsanız ve hp iyi bir kısaltma gibi görünse bile, bu yanıltıcı olabilir.
-
-
 Aslında bir Liste olmadığı sürece, bir hesap grubuna **accountList** olarak başvurmayın. **List** programcılara özel bir şey ifade eder. Hesapların bulunduğu kapsayıcı aslında bir Liste değilse, yanlış sonuçlara varılabilir. Yani **accountGroup** veya **bundleOfAccounts** veya sadece düz hesaplar daha iyi olur.
 
 Küçük şekillerde farklılık gösteren adları kullanmaktan kaçının. Tek bir modüldeki **XYZControllerForEfficientHandlingOfStrings** ile biraz daha uzak bir yerde bulunan **XYZControllerForEfficientStorageOfStrings** arasındaki ince farkı tespit etmek ne kadar sürer? Kelimelerin korkunç derecede benzer şekilleri var.
@@ -247,10 +244,6 @@ Aynı şekilde, aynı kod tabanında bir **controller**, bir **manager** ve bir 
 
 Bununla birlikte, aslında aynı anlamda **add** yapmadığı durumlarda, "tutarlılık" için ekleme kelimesini kullanmaya karar verilebilir. **Add**'in mevcut iki değeri ekleyerek veya birleştirerek yeni bir değer yaratacağı birçok sınıfımız olduğunu varsayalım. Şimdi tek parametresini bir koleksiyona koyan bir metoda sahip yeni bir sınıf yazdığımızı varsayalım. Bu yönteme **add** mı demeliyiz? Pek çok başka ekleme yöntemimiz olduğu için tutarlı görünebilir, ancak bu durumda anlambilim farklıdır, bu nedenle bunun yerine **insert** veya **append** gibi bir ad kullanmalıyız. Yeni metot **add** çağırmak bir kelime oyunu olur.
 
-### Çözüm Etki Alanı Adlarını Kullan
-
-Kodunuzu okuyan kişilerin programcı olacağını unutmayın. Öyleyse devam edin ve bilgisayar bilimi (CS) terimlerini, algoritma adlarını, kalıp adlarını, matematik terimlerini vb. kullanın. Her ismi sorunlu alandan çıkarmak akıllıca değildir çünkü iş arkadaşlarımızın, kavramı farklı bir isimle zaten bildikleri halde müşteriye her ismin ne anlama geldiğini sormak için ileri geri koşmalarını istemeyiz.
-
 ### Anlamlı Bağlam Ekle
 
 Değişkenlerin daha anlamlı bir bağlama ihtiyacı var mı? İşlev adı bağlamın yalnızca bir kısmını sağlar; gerisini algoritma sağlar. Fonksiyonu baştan sona okuduğunuzda, **number**, **verb** ve **pluralModifier** olmak üzere üç değişkenin "guess statistics" mesajının parçası olduğunu görürsünüz. Maalesef bağlamın anlaşılması gerekiyor. Metota ilk baktığınızda değişkenlerin anlamları anlaşılmazdır.
@@ -323,13 +316,7 @@ public class GuessStatisticsMessage {
 
 “Gas Station Deluxe” adı verilen hayali bir uygulamada her sınıfın önüne GSD eklemek kötü bir fikirdir. Açıkçası araçlarınıza karşı çalışıyorsunuz. G yazıp tamamlama tuşuna basıyorsunuz ve sistemdeki her sınıfın bir mil uzunluğundaki listesiyle ödüllendiriliyorsunuz. Bu akıllıca mı? IDE'nin size yardım etmesini neden zorlaştırasınız ki? Aynı şekilde GSD’nin muhasebe modülünde bir MailingAddress sınıfı icat ettiğinizi ve buna GSDAccountAddress adını verdiğinizi varsayalım. Daha sonra müşteri iletişim başvurunuz için bir posta adresine ihtiyacınız olacak. GSDAccountAddress'i kullanıyor musunuz? Doğru isim gibi mi görünüyor? 17 karakterden 10'u gereksiz veya alakasız.
 
-İyi isimler seçmenin en zor yanı, iyi tanımlayıcı beceriler ve ortak bir kültürel arka plan gerektirmesidir. Bu teknik, ticari veya yönetimsel bir sorundan ziyade bir öğretim sorunudur. Sonuç olarak bu alandaki birçok insan bunu yapmayı çok iyi öğrenemiyor.
 
-### Son sözler
-
-İyi isimler seçmenin en zor yanı, iyi tanımlayıcı beceriler ve ortak bir kültürel arka plan gerektirmesidir. Bu teknik, ticari veya yönetimsel bir sorundan ziyade bir öğretim sorunudur. Sonuç olarak bu alandaki birçok insan bunu yapmayı çok iyi öğrenemiyor.
-
-İnsanlar ayrıca bazı geliştiricilerin itiraz edeceği korkusuyla bazı şeyleri yeniden adlandırmaktan da korkuyorlar. Bu korkuyu paylaşmıyoruz ve isimler değiştiğinde (daha iyiye doğru) gerçekten minnettar olduğumuzu görüyoruz. Çoğu zaman sınıfların ve yöntemlerin adlarını gerçekten ezberlemiyoruz. Bunun gibi ayrıntılarla başa çıkmak için modern araçları kullanırız, böylece kodun paragraflar ve cümleler gibi mi yoksa en azından tablolar ve veri yapısı gibi mi okunduğuna odaklanabiliriz (bir cümle her zaman verileri görüntülemenin en iyi yolu değildir). Tıpkı diğer kod iyileştirmelerinde olduğu gibi, yeniden adlandırdığınızda muhtemelen birisini şaşırtacaksınız. Seni yolundan alıkoymasına izin verme.
 
 
 
