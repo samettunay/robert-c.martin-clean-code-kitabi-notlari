@@ -9,5 +9,10 @@ Bu GitHub projesi, Robert C. Martin'in "Clean Code" kitabının özet ve notlar�
 
 
 ## Clean Code - Chapter 1
+
+
+![image](https://github.com/samettunay/robert-c.martin-clean-code-kitabi-notlari/assets/79511355/cf376c21-581d-43d9-9d3f-35f77020d70f)
+
+
 ## Meaningful Names - Chapter 2
 
