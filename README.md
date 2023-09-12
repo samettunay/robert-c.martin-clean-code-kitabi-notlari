@@ -314,7 +314,7 @@ public class GuessStatisticsMessage {
 ```
 ### Gereksiz Bağlam Eklemeyin
 
-“Gas Station Deluxe” adı verilen hayali bir uygulamada her sınıfın önüne GSD eklemek kötü bir fikirdir. Açıkçası araçlarınıza karşı çalışıyorsunuz. G yazıp tamamlama tuşuna basıyorsunuz ve sistemdeki her sınıfın bir mil uzunluğundaki listesiyle ödüllendiriliyorsunuz. Bu akıllıca mı? IDE'nin size yardım etmesini neden zorlaştırasınız ki? Aynı şekilde GSD’nin muhasebe modülünde bir MailingAddress sınıfı icat ettiğinizi ve buna GSDAccountAddress adını verdiğinizi varsayalım. Daha sonra müşteri iletişim başvurunuz için bir posta adresine ihtiyacınız olacak. GSDAccountAddress'i kullanıyor musunuz? Doğru isim gibi mi görünüyor? 17 karakterden 10'u gereksiz veya alakasız.
+“Gas Station Deluxe” adı verilen hayali bir uygulamada her sınıfın önüne **GSD** eklemek kötü bir fikirdir. Açıkçası araçlarınıza karşı çalışıyorsunuz. **G** yazıp tamamlama tuşuna basıyorsunuz ve sistemdeki her sınıfın bir mil uzunluğundaki listesiyle ödüllendiriliyorsunuz. 
 
 
 
