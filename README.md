@@ -240,8 +240,6 @@ Aynı şekilde, aynı kod tabanında bir **controller**, bir **manager** ve bir 
 
 ### Anlamlı Bağlam Ekle
 
-"Kavram başına bir kelime" kuralını izlerseniz, örneğin **add** yöntemine sahip birçok sınıfla karşılaşabilirsiniz. Çeşitli **add** yöntemlerinin parametre listeleri ve dönüş değerleri anlamsal olarak eşdeğer olduğu sürece her şey yolundadır.
-
 Bununla birlikte, aslında aynı anlamda **add** yapmadığı durumlarda, "tutarlılık" için ekleme kelimesini kullanmaya karar verilebilir. **Add**'in mevcut iki değeri ekleyerek veya birleştirerek yeni bir değer yaratacağı birçok sınıfımız olduğunu varsayalım. Şimdi tek parametresini bir koleksiyona koyan bir metoda sahip yeni bir sınıf yazdığımızı varsayalım. Bu yönteme **add** mı demeliyiz? Pek çok başka ekleme yöntemimiz olduğu için tutarlı görünebilir, ancak bu durumda anlambilim farklıdır, bu nedenle bunun yerine **insert** veya **append** gibi bir ad kullanmalıyız. Yeni metot **add** çağırmak bir kelime oyunu olur.
 
 ### Anlamlı Bağlam Ekle
